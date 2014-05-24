@@ -2,5 +2,5 @@ class Match
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  has_one :tournament
+  belongs_to :tournament
 end
