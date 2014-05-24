@@ -37,6 +37,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  gem 'better_errors'
+end
+
 group :development, :test do
   gem "rspec-rails", :github => "rspec/rspec-rails"
 end
