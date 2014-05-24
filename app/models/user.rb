@@ -33,4 +33,22 @@ class User
   # field :failed_attempts, :type => Integer, :default => 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
   # field :locked_at,       :type => Time
+
+  field :provider, type: String
+  field :uid, type: String
+  field :name, type: String
+  field :image, type:String
+
+  devise :omniauthable, :omniauth_providers => [:facebook]
+
+  def self.find_for_facebook_oauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name
+      user.image = auth.info.image
+    end
+  end
 end

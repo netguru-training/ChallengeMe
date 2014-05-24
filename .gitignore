@@ -33,6 +33,8 @@ db/*.sqlite3
 /config/config.yml
 /config/database.yml
 /config/mongoid.yml
+/config/initializers/omniauth.rb
+config/initializers/devise.rb
 /coverage.data
 /coverage/
 /db/*.javadb/

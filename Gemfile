@@ -10,6 +10,8 @@ gem "twitter-bootstrap-rails"
 gem 'bootstrap-sass'
 gem 'decent_exposure'
 gem 'devise'
+gem "omniauth"
+gem 'omniauth-facebook'
 
 gem 'sass-rails', '~> 4.0.0'
 
