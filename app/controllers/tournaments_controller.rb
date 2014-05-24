@@ -2,8 +2,6 @@ class TournamentsController < ApplicationController
 	expose(:tournament , attributes: :tournament_params )
 	expose(:tournaments, attributes: :tournaments_params)  
 
-
-
 	def index
 	end
 
@@ -23,13 +21,14 @@ class TournamentsController < ApplicationController
 	end
 
 	def show 
-
 	end
 
   def update
   end
 
 	def destroy
+		tournament.destroy
+		render action: :show
 	end
 
 	private

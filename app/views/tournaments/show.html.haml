@@ -1,5 +1,6 @@
 - tournaments.each do |tournament|
   %li
-    .tournament__name= tournament.name
-      
+    .tournament__name= tournament.name 
+    .tournament__name= link_to "delete", tournament_path(tournament), :method => :delete
+
       
