@@ -4,6 +4,6 @@ class Team
 
   field :name, type: String
 
-  has_many :user
+  has_many :membership
 
 end
