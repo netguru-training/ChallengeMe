@@ -1,3 +1,16 @@
+GIT
+  remote: git://github.com/rspec/rspec-rails.git
+  revision: 8853ac9bb30ce4643a02c82a15cedac2c193ae47
+  specs:
+    rspec-rails (3.0.0.rc1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (= 3.0.0.rc1)
+      rspec-expectations (= 3.0.0.rc1)
+      rspec-mocks (= 3.0.0.rc1)
+      rspec-support (= 3.0.0.rc1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -112,14 +125,6 @@ GEM
       rspec-support (= 3.0.0.rc1)
     rspec-mocks (3.0.0.rc1)
       rspec-support (= 3.0.0.rc1)
-    rspec-rails (3.0.0.rc1)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      railties (>= 3.0)
-      rspec-core (= 3.0.0.rc1)
-      rspec-expectations (= 3.0.0.rc1)
-      rspec-mocks (= 3.0.0.rc1)
-      rspec-support (= 3.0.0.rc1)
     rspec-support (3.0.0.rc1)
     sass (3.2.19)
     sass-rails (4.0.3)
@@ -172,7 +177,7 @@ DEPENDENCIES
   jquery-rails
   mongoid
   rails (= 4.0.0)
-  rspec-rails (~> 3.0.0.beta)
+  rspec-rails!
   sass-rails (~> 4.0.0)
   sdoc
   turbolinks
