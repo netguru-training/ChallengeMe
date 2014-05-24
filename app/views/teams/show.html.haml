@@ -1,3 +1,8 @@
 %h3
   Team:
   =team.name
+
+%h4 Add user to team
+= simple_form_for :user, url: add_to_team_team_path(team), method: :post do |f|
+  = f.input :email
+  = f.submit

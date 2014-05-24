@@ -45,6 +45,8 @@ class User
 
   devise :omniauthable, :omniauth_providers => [:facebook]
 
+  index({ email: 1 }, { unique: true, name: "ssn_index" })
+
   def self.find_for_facebook_oauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
