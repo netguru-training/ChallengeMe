@@ -6,6 +6,7 @@ gem 'rails', '4.0.0'
 gem 'mongoid'
 
 gem 'haml-rails'
+gem "twitter-bootstrap-rails"
 gem 'bootstrap-sass'
 gem 'decent_exposure'
 gem 'devise'
