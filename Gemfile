@@ -8,6 +8,7 @@ gem 'mongoid'
 gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'decent_exposure'
+gem 'devise'
 
 gem 'sass-rails', '~> 4.0.0'
 
