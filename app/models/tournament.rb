@@ -4,6 +4,6 @@ class Tournament
 
   field :name, type: String
 
-  has_many :match
+  has_many :matches
   has_and_belongs_to_many :teams
 end
