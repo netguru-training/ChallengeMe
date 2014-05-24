@@ -24,7 +24,7 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
-  has_many  :membership
+  has_and_belongs_to_many :teams
 
   ## Confirmable
   # field :confirmation_token,   :type => String
