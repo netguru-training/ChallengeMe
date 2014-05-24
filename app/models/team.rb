@@ -6,7 +6,7 @@ class Team
 
   field :name, type: String
  
-  has_and_belongs_to_many :tournament
+  has_and_belongs_to_many :tournaments
   has_and_belongs_to_many :users
 
   DIRTY_WORDS = %W{
@@ -14,8 +14,6 @@ class Team
   }
 
   field :name, type: String
-
-  has_many :membership
 
   validates_presence_of :name
   validate :filter_dirty_words
