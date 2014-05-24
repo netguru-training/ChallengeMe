@@ -1,4 +1,4 @@
-class Tournamtent
+class Tournament
   include Mongoid::Document
   include Mongoid::Timestamps
 
