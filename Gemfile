@@ -37,5 +37,4 @@ end
 
 group :development, :test do
   gem "rspec-rails", :github => "rspec/rspec-rails"
-  gem 'capybara', github: 'jnicklas/capybara', branch: 'master'
 end
