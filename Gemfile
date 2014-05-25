@@ -43,4 +43,5 @@ end
 
 group :development, :test do
   gem "rspec-rails", :github => "rspec/rspec-rails"
+  gem 'database_cleaner'
 end
