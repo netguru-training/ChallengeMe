@@ -11,6 +11,7 @@ class TeamsController < ApplicationController
       team.users << current_user
       redirect_to team
     else
+      flash[:error] = "Team has not been saved - form contains errors"
       render :new
     end
   end
