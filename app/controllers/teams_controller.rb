@@ -1,5 +1,11 @@
 class TeamsController < ApplicationController
-  expose(:teams) { current_user.teams }
+  expose(:teams) do
+    if current_user.has_role? :super_admin
+      Team.paginate(:page => params[:page], :per_page => 10)
+    else
+      current_user.teams
+    end
+ end
   expose(:team, attributes: :team_params)
 
   before_action :authenticate_user!
@@ -26,6 +32,12 @@ class TeamsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    team.destroy
+    flash[:notice] = "You have successfully delete product"
+    redirect_to team
   end
 
   def add_to_team
@@ -69,6 +81,8 @@ class TeamsController < ApplicationController
 
   def team_admin!
     team = Team.find(params[:id])
-    redirect_to root_path unless current_user.has_role? :admin, team
+    unless (current_user.has_role? :admin, team) || (current_user.has_role? :super_admin)
+      redirect_to root_path
+    end
   end
 end
