@@ -47,9 +47,12 @@
             - if user_signed_in?
               %h3 Sidebar
               %ul.nav.nav-list
-                %li.nav-header Sidebar
-                %li= link_to "Tournaments list", tournaments_path
-                %li= link_to "Teams list", teams_path
+                %li
+                  %h4
+                    = link_to "Tournaments list", tournaments_path
+                %li
+                  %h4
+                    = link_to "Teams list", teams_path
             - else
               %P
       %footer
