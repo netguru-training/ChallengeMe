@@ -5,7 +5,7 @@ class Team
   resourcify
 
   field :name, type: String
- 
+
   has_and_belongs_to_many :tournaments
   has_and_belongs_to_many :users
 

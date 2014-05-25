@@ -2,13 +2,22 @@
   Team:
   =team.name
 
-%h4 Users:
+%h4 Admins:
 %ul
-- team.users.each do |u|
+- User.with_role(:admin, team).each do |u|
   %li= link_to( u.name || u.email, u)
+
+- unless User.with_role(:member, team).empty?
+  %h4 Users:
+%table.table
+  - User.with_role(:member, team).each do |u|
+    %tr
+      %td= link_to( u.name || u.email, u)
+      %td= button_to "Add admin role", add_admin_role_team_path(user: u), class: "btn btn-primary"
+      %td= button_to "Remove user from team", remove_from_team_team_path(user: u), class: "btn btn-danger"
 
 - if current_user.has_role? :admin, team
   %h4 Add user to team
   = simple_form_for :user, url: add_to_team_team_path(team), method: :post do |f|
     = f.input :email
-    = f.submit
+    = f.submit 'Add user to team', class: "btn btn-primary"
