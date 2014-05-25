@@ -1,6 +1,7 @@
 class TournamentsController < ApplicationController
 	expose(:tournament , attributes: :tournament_params )
 	expose(:tournaments, attributes: :tournaments_params)  
+	before_filter :authenticate_user!
 
 	def index
 	end
@@ -27,6 +28,7 @@ class TournamentsController < ApplicationController
   end
 
 	def destroy
+		binding.pry
 		tournament.destroy
 		render action: :show
 	end
