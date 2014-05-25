@@ -1,13 +1,15 @@
 - no_of_rounds = tournament.matches.last.round
 - (1..no_of_rounds).each do |round|
-  %h5 Round #{round}
+  %h3 Round #{round}
+
   - tournament.matches_for_round(round).each do |match|
     - if match.host
       %p
         #{match.host.name} - #{match.guest.name}
+        %a{:href => '#add-match-result', :'data-toggle' => 'modal', :'data-id' => match.id} zapisz wynik
     - else
       %p
         match
 
 
-
+= render 'shared/modals/add_match_result'
