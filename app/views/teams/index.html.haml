@@ -1,4 +1,7 @@
-%h3 Your teams
+- if current_user.has_role? :super_admin
+  %h3 All teams
+- else
+  %h3 Your teams
 
 = link_to new_team_path, class: 'btn btn-primary' do
   %i.icon.icon-plus
@@ -21,7 +24,9 @@
           = image_tag t.photo.tiny_thumb
         %td
           = link_to t.name, t
-        %td
-          = link_to "Edit", edit_team_path(t)
-
+        %td= link_to "Edit", edit_team_path(t)
+        - if current_user.has_role? :super_admin
+          %td
+            = button_to "Destroy", team_path(t), class: "btn btn-danger", method: :delete, confirm: "Are you sure?"
+= will_paginate teams
 
