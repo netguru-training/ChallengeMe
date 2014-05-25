@@ -1,15 +1,15 @@
 class TeamsController < ApplicationController
-  expose(:teams) do
-    if current_user.has_role? :super_admin
-      Team.paginate(:page => params[:page], :per_page => 10)
-    else
-      current_user.teams
-    end
- end
+  expose(:teams) { current_user.teams }
   expose(:team, attributes: :team_params)
 
   before_action :authenticate_user!
   before_action :team_admin!, only: :add_to_team
+
+  def index
+    if current_user.has_role? :super_admin
+      self.teams = Team.paginate(:page => params[:page], :per_page => 10)
+    end
+  end
 
   def create
     if team.save
@@ -20,10 +20,6 @@ class TeamsController < ApplicationController
       flash[:error] = "Team has not been saved - form contains errors"
       render :new
     end
-  end
-
-  def edit
-
   end
 
   def update
