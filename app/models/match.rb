@@ -11,4 +11,8 @@ class Match
 
   belongs_to :host, :class_name => 'Team'
   belongs_to :guest, :class_name => 'Team'
+
+  def winner
+    host_score > guest_score ? (return host) : (return guest)
+  end
 end
