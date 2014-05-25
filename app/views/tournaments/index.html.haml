@@ -4,4 +4,4 @@
 
 - tournaments.each do |tournament|
   %li.tournament
-    .tournament__name= tournament.name
+    .tournament__name= link_to tournament.name, tournament_path(tournament)

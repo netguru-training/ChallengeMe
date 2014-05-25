@@ -1,6 +1,7 @@
 class TournamentsController < ApplicationController
 	expose(:tournament , attributes: :tournament_params )
-	expose(:tournaments, attributes: :tournaments_params)  
+	expose(:tournaments, attributes: :tournaments_params)
+  
 
 	def index
 	end
@@ -28,8 +29,20 @@ class TournamentsController < ApplicationController
 
 	def destroy
 		tournament.destroy
-		render action: :show
+		render action: :index
 	end
+
+  def add_teams
+    tournament = Tournament.find(params[:id])
+    teams = Team.find(params['team']['team'].reject(&:empty?))
+    if teams
+      tournament.teams << teams
+      flash[:notice] = "Teams were added to tournament"
+    else
+      flash[:error] = "Teams were not found"
+    end
+    redirect_to tournament
+  end
 
 	private
 

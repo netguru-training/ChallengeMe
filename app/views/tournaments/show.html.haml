@@ -1,6 +1,12 @@
-- tournaments.each do |tournament|
-  %li
-    .tournament__name= tournament.name 
-    .tournament__name= link_to "delete", tournament_path(tournament), :method => :delete
+%h3
+  Tournament:
+  = tournament.name
+  /  .tournament__name= link_to "delete", tournament_path(tournament), method: :delete
+%h4
+  Tournament teams:
+  - tournament.teams.each do |team|
+    = "#{team.name}, "
 
-      
+= simple_form_for :team, url: add_teams_tournament_path(tournament), method: :post do |f|
+  = f.input :team, collection: Team.all, include_blank: false, input_html: { class: 'chosen-select', multiple: "true"}
+  = f.button :submit
