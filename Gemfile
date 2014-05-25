@@ -25,6 +25,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails'
+gem 'chosen-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -42,6 +43,10 @@ group :development, :test do
   gem "rspec-rails", :github => "rspec/rspec-rails"
   gem 'database_cleaner'
   gem 'pry'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
 
 group :test do

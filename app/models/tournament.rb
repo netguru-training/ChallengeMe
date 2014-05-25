@@ -6,6 +6,8 @@ class Tournament
 
   has_many :matches
   has_and_belongs_to_many :teams
+  belongs_to :user
+
   validates_presence_of :name
 
   def matches_for_round(round)
