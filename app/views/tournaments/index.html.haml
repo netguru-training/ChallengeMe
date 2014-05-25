@@ -3,6 +3,7 @@
   %i.icon.icon-plus
   Add new tournament
 
+<<<<<<< HEAD
 %hr
 %table{:class => 'table table-hovered table-bordered'}
   %thead
@@ -18,3 +19,10 @@
           = link_to t.name, t
         %td
           = link_to "Edit", edit_tournament_path(t)
+=======
+= link_to 'add new', new_tournament_path
+
+- tournaments.each do |tournament|
+  %li.tournament
+    .tournament__name= link_to tournament.name, tournament_path(tournament)
+>>>>>>> 6fc951a8ae6294ade52d1459697e2d146a7e0b9f
