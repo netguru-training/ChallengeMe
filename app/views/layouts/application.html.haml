@@ -44,11 +44,13 @@
           = yield
         .span3
           .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Add tournament", new_tournament_path
-              %li= link_to "Your team", teams_path
-
+            - if user_signed_in?
+              %h3 Sidebar
+              %ul.nav.nav-list
+                %li.nav-header Sidebar
+                %li= link_to "Add tournament", new_tournament_path
+                %li= link_to "Add team", new_team_path
+            - else
+              %P
       %footer
         %p &copy; Company 2014

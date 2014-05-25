@@ -15,6 +15,10 @@ class TeamsController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
   def update
     if team.save
       redirect_to team
