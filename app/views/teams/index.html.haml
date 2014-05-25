@@ -1,6 +1,23 @@
 %h3 Your teams
-%ul
-- teams.each do |t|
-  %li= render t
+= link_to "Add new team", new_team_path, :class => 'btn btn-primary'
+%hr
+%table{:class => 'table table-hovered table-bordered'}
+  %thead
+    %tr
+      %th{:style => 'width:50px'}
+        = '#'
+      %th
+        = 'Name'
+      %th
+        = 'Actions'
+  %tbody
+    - teams.each do |t|
+      %tr
+        %td
+          = image_tag t.photo.tiny_thumb
+        %td
+          = t.name
+        %td
+          = link_to "Edit", edit_team_path(t)
 
-= link_to "Add new team", new_team_path
+
