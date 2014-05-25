@@ -22,4 +22,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg gif png)
   end
+
+  def default_url
+     'http://www.legendarysaga.com/wp-content/uploads/2013/03/avatar-empty.gif'
+  end
 end

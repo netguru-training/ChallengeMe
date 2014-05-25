@@ -14,6 +14,7 @@ class Tournament
   def matches_for_round(round)
     matches.where(round: round)
   end
+
   def started?
     started
   end

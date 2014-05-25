@@ -28,6 +28,11 @@ class TournamentsController < ApplicationController
 	end
 
   def update
+    if tournament.save
+      redirect_to tournament
+    else
+      render :edit
+    end
   end
 
 	def destroy
@@ -54,6 +59,22 @@ class TournamentsController < ApplicationController
     LadderGenerator.perform(tournament)
     flash[:notice] = 'Tournament started!'
     redirect_to tournament
+  end
+
+  def update_ladder
+    round = 1
+    last_round_matches = Tournament.find(params[:id]).matches_for_round(round)
+    next_round_matches = Tournament.find(params[:id]).matches_for_round(round+1)
+    winners = []
+    last_round_matches.each do |match|
+      winners << match.winner
+    end
+    i = 0
+    winners.each_slice(2) do |winner|
+      next_round_matches[i].host = winner[0]
+      next_round_matches[i].guest = winner[1]
+      i += 1
+    end
   end
 
 	private
