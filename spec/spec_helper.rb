@@ -66,4 +66,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+  RSpec.configure do |config|
+  config.include Devise::TestHelpers, type: :controller
+end
 end
