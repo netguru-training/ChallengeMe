@@ -2,10 +2,13 @@ class TournamentsController < ApplicationController
 	expose(:tournament , attributes: :tournament_params )
 	expose(:tournaments, attributes: :tournaments_params)
 
-	before_filter :authenticate_user!
+  before_filter :authenticate_user!
 
 	def index
 	end
+
+  def show
+  end
 
 	def new
   end 
@@ -21,11 +24,7 @@ class TournamentsController < ApplicationController
     else
     	flash.now[:error] = "It can't be empty"
       render :new
-
     end
-	end
-
-	def show 
 	end
 
   def update
@@ -38,19 +37,27 @@ class TournamentsController < ApplicationController
 
 	def destroy
 		tournament.destroy
-		flash[:error] = "Tournament was deleted"
+		flash[:error] = 'Tournament was deleted'
 		render action: :index
 	end
 
   def add_teams
     tournament = Tournament.find(params[:id])
-    teams = Team.find(params['team']['team'].reject(&:empty?))
+    teams = Team.find(params['teams']['teams'].reject(&:empty?))
     if teams
       tournament.teams << teams
-      flash[:notice] = "Teams were added to tournament"
+      flash[:notice] = 'Teams were added to tournament'
     else
-      flash[:error] = "Teams were not found"
+      flash[:error] = 'Teams were not found'
     end
+    redirect_to tournament
+  end
+
+  def start
+    tournament = Tournament.find(params[:id])
+    tournament.update_attribute(:started, true)
+    LadderGenerator.perform(tournament)
+    flash[:notice] = 'Tournament started!'
     redirect_to tournament
   end
 

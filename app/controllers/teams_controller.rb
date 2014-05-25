@@ -5,6 +5,12 @@ class TeamsController < ApplicationController
   before_action :authenticate_user!
   before_action :team_admin!, only: :add_to_team
 
+  def index
+    if current_user.has_role? :super_admin
+      self.teams = Team.paginate(:page => params[:page], :per_page => 10)
+    end
+  end
+
   def create
     if team.save
       current_user.add_role :admin, team
@@ -16,16 +22,18 @@ class TeamsController < ApplicationController
     end
   end
 
-  def edit
-
-  end
-
   def update
     if team.save
       redirect_to team
     else
       render :edit
     end
+  end
+
+  def destroy
+    team.destroy
+    flash[:notice] = "You have successfully delete product"
+    redirect_to team
   end
 
   def add_to_team
@@ -69,6 +77,8 @@ class TeamsController < ApplicationController
 
   def team_admin!
     team = Team.find(params[:id])
-    redirect_to root_path unless current_user.has_role? :admin, team
+    unless (current_user.has_role? :admin, team) || (current_user.has_role? :super_admin)
+      redirect_to root_path
+    end
   end
 end
