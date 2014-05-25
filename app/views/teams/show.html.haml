@@ -7,7 +7,8 @@
 - team.users.each do |u|
   %li= link_to( u.name || u.email, u)
 
-%h4 Add user to team
-= simple_form_for :user, url: add_to_team_team_path(team), method: :post do |f|
-  = f.input :email
-  = f.submit
+- if current_user.has_role? :admin, team
+  %h4 Add user to team
+  = simple_form_for :user, url: add_to_team_team_path(team), method: :post do |f|
+    = f.input :email
+    = f.submit
