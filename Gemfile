@@ -13,7 +13,6 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'rolify'
 gem 'simple_form'
-gem 'pry'
 gem 'carrierwave-mongoid'
 gem 'rmagick', :require => 'RMagick'
 
@@ -43,4 +42,9 @@ end
 group :development, :test do
   gem "rspec-rails", :github => "rspec/rspec-rails"
   gem 'database_cleaner'
+  gem 'pry'
+end
+
+group :test do
+  gem 'simplecov', :require => false
 end
