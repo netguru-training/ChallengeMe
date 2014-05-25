@@ -15,20 +15,13 @@ gem 'rolify'
 gem 'simple_form'
 gem 'carrierwave-mongoid'
 gem 'rmagick', :require => 'RMagick'
-
 gem 'sass-rails', '~> 4.0.0'
-
 gem 'uglifier', '>= 1.3.0'
-
 gem 'coffee-rails', '~> 4.0.0'
-
-# gem 'therubyracer', platforms: :ruby
-
 gem 'jquery-rails'
 gem 'chosen-rails'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+gem 'will_paginate_mongoid'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

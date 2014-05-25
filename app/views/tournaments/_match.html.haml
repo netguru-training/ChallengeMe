@@ -1,0 +1,13 @@
+- no_of_rounds = tournament.matches.last.round
+- (1..no_of_rounds).each do |round|
+  %h5 Round #{round}
+  - tournament.matches_for_round(round).each do |match|
+    - if match.host
+      %p
+        #{match.host.name} - #{match.guest.name}
+    - else
+      %p
+        match
+
+
+
