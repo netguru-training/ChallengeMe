@@ -5,6 +5,7 @@ ChallengeMe::Application.routes.draw do
   resources :tournaments do
     member do
       post 'add_teams'
+      post 'start'
     end
   end
   resources :teams do
