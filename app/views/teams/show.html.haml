@@ -1,3 +1,4 @@
+
 = image_tag team.photo.thumb, :class => 'img img-polaroid'
 %h3
   Team:
@@ -6,14 +7,18 @@
 %h4 Admins:
 %ul
 - User.with_role(:admin, team).each do |u|
-  %li= link_to( u.name || u.email, u)
+  %li
+    = link_to( u.name || u.email, u, class: 'user-email')
+    = image_tag ''
 
 - unless User.with_role(:member, team).empty?
   %h4 Users:
 %table.table
   - User.with_role(:member, team).each do |u|
     %tr
-      %td= link_to( u.name || u.email, u)
+      
+      %td= link_to( u.name || u.email, u, class: 'user-email' )
+      %td = image_tag ''
       %td= button_to "Add admin role", add_admin_role_team_path(user: u), class: "btn btn-primary"
       %td= button_to "Remove user from team", remove_from_team_team_path(user: u), class: "btn btn-danger"
 
