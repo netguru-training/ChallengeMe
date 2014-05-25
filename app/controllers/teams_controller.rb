@@ -1,8 +1,9 @@
 class TeamsController < ApplicationController
-  expose(:teams)
+  expose(:teams) { current_user.teams }
   expose(:team, attributes: :team_params)
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
+  before_action :team_admin!, only: :add_to_team
 
   def create
     if team.save
@@ -43,5 +44,10 @@ class TeamsController < ApplicationController
     else
       params.require(:team).permit!
     end
+  end
+
+  def team_admin!
+    team = Team.find(params[:id])
+    redirect_to root_path unless current_user.has_role? :admin, team
   end
 end

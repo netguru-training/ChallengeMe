@@ -1,0 +1,6 @@
+%h3= user.name || user.email
+
+%h4 User's teams
+%ul
+-user.teams.each do |t|
+  %li= link_to t.name, t
