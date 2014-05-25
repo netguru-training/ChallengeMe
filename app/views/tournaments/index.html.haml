@@ -1,1 +1,7 @@
-%h1 Hello
+%h1 Tournaments
+
+= link_to 'add new', new_tournament_path
+
+- tournaments.each do |tournament|
+  %li.tournament
+    .tournament__name= tournament.name
