@@ -16,8 +16,11 @@ class TournamentsController < ApplicationController
 		tournament=Tournament.new(tournament_params)
     if tournament.save
       redirect_to(tournament)
+      flash[:notice] = "Tournament was added"
     else
+    	flash.now[:error] = "It can't be empty"
       render :new
+
     end
 	end
 
@@ -28,8 +31,8 @@ class TournamentsController < ApplicationController
   end
 
 	def destroy
-		binding.pry
 		tournament.destroy
+		flash[:error] = "Tournament was deleted"
 		render action: :show
 	end
 
