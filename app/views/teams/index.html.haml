@@ -1,5 +1,8 @@
 %h3 Your teams
-= link_to "Add new team", new_team_path, :class => 'btn btn-primary'
+= link_to new_team_path, :class => 'btn btn-primary' do
+  %i.icon.icon-plus
+  Add new team
+
 %hr
 %table{:class => 'table table-hovered table-bordered'}
   %thead
