@@ -4,17 +4,15 @@
   Add new tournament
 
 %hr
-%table{:class => 'table table-hovered table-bordered'}
+%table{class: 'table'}
   %thead
     %tr
-      %th
-        = 'Name'
-      %th
-        = 'Actions'
+      %th Name
+      %th Actions
   %tbody
     - tournaments.each do |t|
       %tr
         %td
-          = link_to t.name, t
+          %h4= link_to t.name, t
         %td
-          = link_to "Edit", edit_tournament_path(t)
+          = link_to "Edit", edit_tournament_path(t), class: "btn btn-primary"

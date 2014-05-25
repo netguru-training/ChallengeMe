@@ -1,3 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ -> 
+	$(".user-email").on "click", (e)->
+		e.preventDefault()
+		user = e.target.text
+		gravatar = $(e.target).parent().find('img').attr(src: "http://www.gravatar.com/avatar/" + $.md5(user))
+		

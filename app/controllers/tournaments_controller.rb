@@ -28,6 +28,11 @@ class TournamentsController < ApplicationController
 	end
 
   def update
+    if tournament.save
+      redirect_to tournament
+    else
+      render :edit
+    end
   end
 
 	def destroy
