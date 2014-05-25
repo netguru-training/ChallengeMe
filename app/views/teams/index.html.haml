@@ -1,0 +1,6 @@
+%h3 Your teams
+%ul
+- teams.each do |t|
+  %li= render t
+
+= link_to "Add new team", new_team_path
