@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 gem 'mongoid'
-
 gem 'haml-rails'
 gem "twitter-bootstrap-rails"
 gem 'bootstrap-sass'
@@ -16,7 +15,7 @@ gem 'rolify'
 gem 'simple_form'
 gem 'pry'
 gem 'carrierwave-mongoid'
-gem 'rmagick'
+gem 'rmagick', :require => 'RMagick'
 
 gem 'sass-rails', '~> 4.0.0'
 
@@ -28,7 +27,6 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'jquery-rails'
 
-gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -44,4 +42,5 @@ end
 
 group :development, :test do
   gem "rspec-rails", :github => "rspec/rspec-rails"
+  gem 'database_cleaner'
 end

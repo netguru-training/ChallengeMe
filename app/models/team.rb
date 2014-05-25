@@ -5,6 +5,7 @@ class Team
   resourcify
 
   field :name, type: String
+  mount_uploader :photo, AvatarUploader
 
   has_and_belongs_to_many :tournaments
   has_and_belongs_to_many :users
@@ -12,8 +13,6 @@ class Team
   DIRTY_WORDS = %W{
       kurcze
   }
-
-  field :name, type: String
 
   validates_presence_of :name
   validate :filter_dirty_words

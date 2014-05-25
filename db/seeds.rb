@@ -14,9 +14,6 @@ user4 = User.first_or_create(:email => "user4@example.com", :password => "change
 team1 = Team.first_or_create(:name => "Team A")
 team2 = Team.first_or_create(:name => "Team B")
 
-membership1 = Membership.first_or_create(:user => user1, :team => team1)
-membership2 = Membership.first_or_create(:user => user2, :team => team1)
-membership3 = Membership.first_or_create(:user => user3, :team => team2)
-membership4 = Membership.first_or_create(:user => user4, :team => team2)
-
 tournament1 = Tournament.first_or_create()
+
+match = Match.first_or_create(:tournament => tournament1, :host => team1, :guest => team2)
