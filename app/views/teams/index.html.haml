@@ -28,5 +28,5 @@
         - if current_user.has_role? :super_admin
           %td
             = button_to "Destroy", team_path(t), class: "btn btn-danger", method: :delete, confirm: "Are you sure?"
-= will_paginate teams
+= will_paginate teams if current_user.has_role? :super_admin
 
