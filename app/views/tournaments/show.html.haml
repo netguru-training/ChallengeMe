@@ -1,12 +1,31 @@
 %h3
   Tournament:
   = tournament.name
-  /  .tournament__name= link_to "delete", tournament_path(tournament), method: :delete
-%h4
-  Tournament teams:
-  - tournament.teams.each do |team|
-    = "#{team.name}, "
+  =  link_to "delete", tournament_path(tournament), method: :delete, 
+    data: { confirm: 'Are you sure?'}, class: 'btn btn-danger'
+- unless tournament.started?
+  =  link_to "start tournament", start_tournament_path(tournament), method: :post, class: 'btn btn-success'
 
-= simple_form_for :team, url: add_teams_tournament_path(tournament), method: :post do |f|
-  = f.input :team, collection: Team.all, include_blank: false, input_html: { class: 'chosen-select', multiple: "true"}
-  = f.button :submit
+  %h4
+    Add teams to tournament
+  = simple_form_for :teams, url: add_teams_tournament_path(tournament), method: :post do |f|
+    = f.input :teams, collection: Team.all, include_blank: false, 
+      input_html: { class: 'chosen-select', multiple: "true", required: "true"}
+    = f.button :submit, class: 'btn btn-info'
+
+  %h4
+    Tournament teams:
+  - tournament.teams.each do |team|
+    %table{class: 'table table-hovered table-bordered'}
+      %tbody
+        %tr
+          %td
+            = image_tag team.photo.tiny_thumb
+          %td
+            = link_to team.name, team
+- else
+  %hr
+  %h4
+    Tournament ladder:
+  = render 'match'
+
