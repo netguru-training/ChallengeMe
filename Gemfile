@@ -16,6 +16,7 @@ gem 'rolify'
 gem 'simple_form'
 gem 'pry'
 gem 'carrierwave-mongoid'
+gem 'rmagick'
 
 gem 'sass-rails', '~> 4.0.0'
 
