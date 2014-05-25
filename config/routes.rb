@@ -10,6 +10,8 @@ ChallengeMe::Application.routes.draw do
   resources :teams do
     member do
       post 'add_to_team'
+      post 'add_admin_role'
+      post 'remove_from_team'
     end
   end
 end

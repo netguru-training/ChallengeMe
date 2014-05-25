@@ -11,6 +11,7 @@ class TeamsController < ApplicationController
       team.users << current_user
       redirect_to team
     else
+      flash[:error] = "Team has not been saved - form contains errors"
       render :new
     end
   end
@@ -37,6 +38,22 @@ class TeamsController < ApplicationController
     else
       flash[:error] = "User was not found"
     end
+    redirect_to team
+  end
+
+  def add_admin_role
+    team = Team.find(params[:id])
+    user = User.find(params[:user])
+    user.remove_role :member, team
+    user.add_role :admin, team
+    redirect_to team
+  end
+
+  def remove_from_team
+    team = Team.find(params[:id])
+    user = User.find(params[:user])
+    user.remove_role :member, team
+    team.users.delete user
     redirect_to team
   end
 

@@ -12,12 +12,9 @@
 
 # bundler state
 /.bundle
-<<<<<<< HEAD
 /config/mongo.yml
-=======
 /vendor/bundle/
 /vendor/ruby/
->>>>>>> c18968ac531ef645dcd008426efba7dbacf693b9
 
 # minimal Rails specific artifacts
 db/*.sqlite3

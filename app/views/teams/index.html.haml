@@ -1,5 +1,9 @@
 %h3 Your teams
-= link_to "Add new team", new_team_path, class: 'btn btn-primary'
+
+= link_to new_team_path, class: 'btn btn-primary' do
+  %i.icon.icon-plus
+  Add new team
+
 %hr
 %table{class: 'table table-hovered table-bordered'}
   %thead
@@ -16,7 +20,7 @@
         %td
           = image_tag t.photo.tiny_thumb
         %td
-          = t.name
+          = link_to t.name, t
         %td
           = link_to "Edit", edit_team_path(t)
 
