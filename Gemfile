@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 gem 'mongoid'
-
 gem 'haml-rails'
 gem "twitter-bootstrap-rails"
 gem 'bootstrap-sass'
@@ -28,7 +27,6 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'jquery-rails'
 
-gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
